@@ -1,9 +1,9 @@
-﻿<!-- /var/www/html/sites/emse/dom_api.html -->
-<!DOCTYPE html> 
-<meta charset="utf-8" /> 
-<html>  
+﻿<!DOCTYPE html>
+<!--meta charset="utf-8" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml"/-->
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>    
-<title>Room API</title>   
+<title>Light API</title>
 <meta charset="utf-8" />    
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0beta.2/css/bootstrap.min.css"          integrity="sha384PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <link rel="stylesheet" href="css/table.css">
@@ -23,7 +23,7 @@
  <p>          <h3>Etat des lumières</h3>        </p>     
  
 
- <div id="rooms"> 
+ <div id="lights">
  <table>
  <thead>
  <tr>
@@ -43,18 +43,19 @@
 	
   <tr v-for="light in info">
   <td>{{light.id}}</td>
-  <td>{{light.status}}</td>
   <td v-if="light.status==='ON'"><img src="images/light-on.png"/></td>
   <td v-else-if="light.status==='OFF'"><img src="images/light-off.png"/></td>
+  <td v-else>Erreur</td>
   <td>{{light.bri}}</td>
   <td>{{light.colour}}</td>
   <td>{{light.sat}}</td>
   <td>{{light.roomId}}</td>
-  <td><button v-on:click="switchLight(room)"><img src="images/switch.png"/></button></td>
+  <td><button v-on:click="switchLight(light)"><img src="images/switch.png"/></button></td>
   </tr>
   </tbody>
   </table>
 </div>
-  <script src="dom_api.js"></script>  
+  <script src="dom_api.js"></script>
+ </div>
   </body>
   </html>

@@ -1,21 +1,21 @@
 // JavaScript source code
 // /var/www/html/sites/emse/js/dom_api.js
-// Création d'une requête HTTP 
+// Crï¿½ation d'une requï¿½te HTTP 
 /*var req = new XMLHttpRequest();
- // Requête HTTP GET synchrone vers l'api' publiée 
+ // Requï¿½te HTTP GET synchrone vers l'api' publiï¿½e 
  req.open("GET", "https://thawing-journey-78988.herokuapp.com/api/rooms"); 
  req.addEventListener("load", function () {
-if (req.status >= 200 && req.status < 400) { // Le serveur a réussi à traiter la requête         
+if (req.status >= 200 && req.status < 400) { // Le serveur a rï¿½ussi ï¿½ traiter la requï¿½te         
 	console.log(req.responseText);     
 }
  else {         
- // Affichage des informations sur l'échec du traitement de la requête         
+ // Affichage des informations sur l'ï¿½chec du traitement de la requï¿½te         
  console.error(req.status + " " + req.statusText);     
  } 
  });
  req.addEventListener("error", function () {  
- // La requête n'a pas réussi à atteindre le serveur
- console.error("Erreur réseau"); 
+ // La requï¿½te n'a pas rï¿½ussi ï¿½ atteindre le serveur
+ console.error("Erreur rï¿½seau"); 
  }); 
  req.send(null);
 
@@ -24,20 +24,20 @@ function afficher(reponse) {
 	console.log(reponse); 
 } */
 
-// Exécute un appel AJAX GET // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès 
-function ajaxGet(url, callback) {
+// Exï¿½cute un appel AJAX GET // Prend en paramï¿½tres l'URL cible et la fonction callback appelï¿½e en cas de succï¿½s 
+/* ajaxGet(url, callback) {
     var req = new XMLHttpRequest(); 
 	req.open("GET", url);  
 	req.addEventListener("load", function () {   
 	if (req.status >= 200 && req.status < 400) {         
-	// Appelle la fonction callback en lui passant la réponse de la requête            
+	// Appelle la fonction callback en lui passant la rï¿½ponse de la requï¿½te            
 	callback(req.responseText);        
 	} else {            
 	console.error(req.status + " " + req.statusText + " " + url);       
 	}   
 	});    
 	req.addEventListener("error", function () {  
-	console.error("Erreur réseau avec l'URL " + url);   
+	console.error("Erreur rï¿½seau avec l'URL " + url);   
 	});    
 	req.send(null); }
 
@@ -78,8 +78,8 @@ function parseJSON(text){
 	}
 
 }
-
-function switchLight(id){
+*/
+/*function switchLight(id){
 var req = new XMLHttpRequest();
  req.open("GET", "https://thawing-journey-78988.herokuapp.com/api/rooms");
  var jsonArray=JSON.parse(req.response);
@@ -92,7 +92,7 @@ var req = new XMLHttpRequest();
  }
  req.send(lightStatus);
 
-}
+}*/
 
 
 
@@ -100,36 +100,52 @@ var req = new XMLHttpRequest();
 
 //const heroku_url_api='https://thawing-journey-78988.herokuapp.com/api/rooms';
 
-const heroku_url_api='http://127.0.0.1:8080/api/lights';
+const api='/api/lights';
 
 new Vue({
-  el: '#rooms',
+  el: '#lights',
   data () {
     return {
       info: null,
       loading: true,
       errored: false,
-	  selectedRoom:0
+	  selectedLight:0
 	  }
 
   },
   mounted () {
     axios
-      .get(heroku_url_api)
+      .get(api)
       .then(response => (this.info = response.data))
 	  .catch(error => {
         console.log(error)
         this.errored = true
+        if (this.errored===true){alert("Error")}
       })
       .finally(() => this.loading = false)
 	  
   },
   methods: {
-   switchLight: function(room){  
-   this.selectedRoom=room;
-   let post_url=heroku_url_api+'/'+light.id+'/switch';
-   axios.put(post_url,{roomId: room.id})
-   .then(response =>{this.info=response.data})
+   switchLight: function(light){
+   this.selectedLight=light;
+   let post_url=api+'/'+light.id+'/switch';
+   axios.put(post_url);
+/*   .then(response => (this.info=response.data))
+   .catch(error => {
+           console.log(error)
+           this.errored = true
+           if (this.errored===true){alert("Error")}
+         })*/
+ axios
+      .get(api)
+      .then(response => (this.info = response.data))
+	  .catch(error => {
+        console.log(error)
+        this.errored = true
+        if (this.errored===true){alert("Error")}
+      })
+      .finally(() => this.loading = false)
+
 }
   }
 })

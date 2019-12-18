@@ -25,4 +25,13 @@ public class LightDaoImpl implements LightDaoCustom {
                 .setParameter("value", Status.OFF)
                 .getResultList();
     }
+
+    @Override
+    public Light getLightById(Long id) {
+        String jpql="select lt from Light lt where lt.id = :value";
+        return em.createQuery(jpql,Light.class)
+                .setParameter("value",id)
+                .getSingleResult();
+    }
+
 }

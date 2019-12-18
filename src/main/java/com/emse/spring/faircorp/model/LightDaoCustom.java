@@ -6,4 +6,6 @@ public interface LightDaoCustom {
     List<Light> findOnLights();
 
     List<Light> findOffLights();
+
+    Light getLightById(Long id);
 }
