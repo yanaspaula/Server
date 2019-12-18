@@ -1,0 +1,60 @@
+﻿<!-- /var/www/html/sites/emse/dom_api.html -->
+<!DOCTYPE html> 
+<meta charset="utf-8" /> 
+<html>  
+<head>    
+<title>Room API</title>   
+<meta charset="utf-8" />    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0beta.2/css/bootstrap.min.css"          integrity="sha384PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="css/table.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ </head>  
+ <body>      
+ <header style="display: flex;">              
+ <div id="titre_principal">                  
+ <div id="logo">                      
+ <h1>EMSE</h1>                 
+ </div>                 
+ <h2>Projet Majeure Informatique </h2>              
+ </div>     
+ </header>      
+ <div class="container-flex">        
+ <p>          <h3>Etat des lumières</h3>        </p>     
+ 
+
+ <div id="rooms"> 
+ <table>
+ <thead>
+ <tr>
+<th colspan=7> Lights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Id</td>
+    <td>Status</td>
+	<td>Brightness</td>
+	<td> Colour </td>
+	<td>Saturation</td>
+	<td> RoomId</td>
+	<td>Switch Light</td>
+</tr>
+	
+  <tr v-for="light in info">
+  <td>{{light.id}}</td>
+  <td>{{light.status}}</td>
+  <td v-if="light.status==='ON'"><img src="images/light-on.png"/></td>
+  <td v-else-if="light.status==='OFF'"><img src="images/light-off.png"/></td>
+  <td>{{light.bri}}</td>
+  <td>{{light.colour}}</td>
+  <td>{{light.sat}}</td>
+  <td>{{light.roomId}}</td>
+  <td><button v-on:click="switchLight(room)"><img src="images/switch.png"/></button></td>
+  </tr>
+  </tbody>
+  </table>
+</div>
+  <script src="dom_api.js"></script>  
+  </body>
+  </html>

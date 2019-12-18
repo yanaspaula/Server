@@ -1,0 +1,23 @@
+﻿table {
+  border-collapse: collapse;
+}
+
+
+th{
+	text-align:center;
+}
+
+
+
+table,
+td {
+	text-align:center;
+    border: 1px solid #333;
+}
+
+thead{
+	text-align:center;
+}
+tfoot {
+
+}
