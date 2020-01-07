@@ -1,6 +1,10 @@
 package com.emse.spring.faircorp.rest;
 
+import com.emse.spring.faircorp.entity.Light;
+import com.emse.spring.faircorp.entity.Room;
 import com.emse.spring.faircorp.model.*;
+import com.emse.spring.faircorp.sync.MqttClientSend;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,8 @@ import java.util.stream.Collectors;
 @Transactional
 public class RoomController {
 
+    MqttClientSend mqttClientSend=new MqttClientSend();
+
     @Autowired
     RoomDao roomDao;
 
@@ -22,6 +28,8 @@ public class RoomController {
 
     @Autowired
     private BuildingDao buildingDao;
+
+
 
     @GetMapping
     public List<RoomDto> findAll() {
@@ -44,6 +52,12 @@ public class RoomController {
         for (int i = 0; i < lights.size(); i++) {
             Light light = lights.get(i);
             light.setStatus(light.getStatus() == Status.ON ? Status.OFF : Status.ON);
+            try {
+                mqttClientSend.sendRequest(light.getId().toString(), light.getStatus(), light.getBri(), light.getColour(), light.getSat());
+            }
+            catch(MqttException e){
+                e.printStackTrace();
+            }
             lightdtos.add(new LightDto(light));
         }
         return lightdtos;

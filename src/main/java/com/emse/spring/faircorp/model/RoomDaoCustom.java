@@ -1,5 +1,8 @@
 package com.emse.spring.faircorp.model;
 
+import com.emse.spring.faircorp.entity.Light;
+import com.emse.spring.faircorp.entity.Room;
+
 import java.util.List;
 
 public interface RoomDaoCustom {

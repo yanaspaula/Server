@@ -1,5 +1,7 @@
 package com.emse.spring.faircorp.rest;
 
+import com.emse.spring.faircorp.entity.Building;
+import com.emse.spring.faircorp.entity.Room;
 import com.emse.spring.faircorp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

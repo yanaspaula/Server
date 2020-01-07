@@ -1,0 +1,5 @@
+C'est ici que contient le code pour instancier des objets MQTT pour relier principalement l'android, l'arduino et le serveur.
+
+Seul 2 classes sont utilisés, ce sont MqtttclientListenRequest et MqqtClientsend,
+
+les autres sont des ajouts dont la partie http avait pour but de relier l'arduino et le serveur par requete http.

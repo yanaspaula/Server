@@ -1,0 +1,127 @@
+<!--
+    
+Ce document html est notre interface web associé à notre projet de majeur du groupe SAFFAF/LEMEE/SOARES
+DE PAULA.
+
+Le fonctionnement est assez trivial, on ouvre la page sur un navigateur, et si la requete est bien ennvoyé
+au serveur que nous avons dévellopé, elle affiche la liste des lampes avec id, roomid, status, brightness,
+color et saturation.
+
+Il est possible de faire varier l'état et la couleur (3 modes possibles Rouge/Vert/blue) en cliquant sur les boutons
+
+
+Status: ON / OFF
+Brightness: 0 à 255
+Color: 0 à 65535 (donnée donné en couleur correpondante)
+Saturation: 0 à 255
+
+La page utilise et télécharge en ligne les outils axioms et Vue permettant à l'interface d'etre mis à jour
+en continue.
+
+-->
+
+
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- Header+téléchargment des scripts/fichiers css-->
+        <title>La Page de L'infini</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/monstyle.css" />
+        <script src="AxiosVue/Vue.js"></script>
+        <script src="AxiosVue/Axios.js"></script>
+    </head>
+
+<!--Creation du contenu de la page avec un tableau de taille variable-->   
+<body background="images/Petitdessinfamiliale.jpg" >
+    <header>
+        <div id="titre_principal">
+            <div id="logo">
+                <h1 align='center'>EMSE</h1>
+            </div>
+            <h2 align='center'>Interface Changement des lampes </h2>
+        </div>
+    </header>
+
+    <div id="lights">
+        <table id="table">
+        <tr>
+            <td>ID</td>
+            <td>Room ID</td>
+            <td>Status</td>
+            <td>Brightness</td>
+            <td>Color</td>
+            <td>Saturation</td>
+            <td>Switch Light</td>
+            <td>Set Light Red</td>
+            <td>Set Light Green</td>
+            <td>Set Light Blue</td>
+        </tr>
+        
+        <!--
+            On parcours le JSON recu avec la liste des lights
+            Structure du JSON: {"id": idvalue, "idroom": idroomvalue, "status": statusvalue,
+             "brightness": brightnessvalue, "color": colorvalue, "saturation": saturationvalue},{"id":...
+        -->
+        <tr v-for="light in info">
+            <td>{{light.id}}</td>            
+            <td>{{light.roomId}}</td>
+            <td v-if="light.status==='ON'"><img src="images/light-on.png" id="Logolighton"/></td>
+            <td v-else-if="light.status==='OFF'" ><img src="images/light-off.png" id="Logolightoff"/></td>
+            <td v-else>ERROR</td>
+            <td>{{light.bri}}</td>
+            <!--Ici la couleur est donné selon la valeur hue, elle renvoie rouge, bleu ou vert-->
+            <td>{{getLightString(light)}}</td>
+            <td>{{light.sat}}</td>
+            
+            <!--On crée 4 boutons pour envoyer des requetes grace aux méthodes switchlight et setlight-->
+            <td><button v-on:click="switchLight(light)"><img src="images/Switch.png/"></button></td>
+            <td><button v-on:click="setLight('red',light)"><img src="images/Switch.png/"></button></td>
+            <td><button v-on:click="setLight('green',light)"><img src="images/Switch.png/"></button> </td>
+            <td><button v-on:click="setLight('blue',light)"><img src="images/Switch.png/"></button> </td>
+        </tr>
+
+        <!--Ceci est une partie test pour attribuer des id unique à chaque champ-->
+        <!--<tr>
+                <td><input type="text" id="hello" class="hello1" name="status"></td>
+        </tr>
+        <tr>
+                <td><input type="text" id="hello" class="hello1" name="status"></td>                
+        </tr>-->
+        </table>
+        
+    </div>
+
+
+    <div id="titre2">
+        <h2 align='center'>Les Rooms </h2>
+    </div>
+
+    <div id="lights2">
+        <table id="tableroom">
+            <tr>
+                <td>ID</td>
+                <td>Room ID</td>
+                <td>Choose room</td>
+                <td>Confirm</td>
+            </tr>
+            <!--
+                On parcours le JSON recu avec la liste des lights
+                Structure du JSON: {"id": idvalue, "idroom": idroomvalue, "status": statusvalue,
+                 "brightness": brightnessvalue, "color": colorvalue, "saturation": saturationvalue},{"id":...
+            -->
+            <tr v-for="light in info">
+                <td>{{light.id}}</td>
+                <td>{{light.roomId}}</td>
+                <td><input v_model="champroomID" type="text"></td>
+                <td><button v-on:click="setRoom(light)"><img src="images/Switch.png/"></button> </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <script src="MaPageWeb.js"></script>
+    <script src="MaPageWeb2.js"></script>
+</body>
+

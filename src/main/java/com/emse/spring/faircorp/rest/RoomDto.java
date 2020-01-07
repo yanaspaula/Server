@@ -1,8 +1,8 @@
+
 package com.emse.spring.faircorp.rest;
 
-import com.emse.spring.faircorp.model.*;
-import com.emse.spring.faircorp.model.RoomDao;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.emse.spring.faircorp.entity.Light;
+import com.emse.spring.faircorp.entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,9 @@ import java.util.List;
 public class RoomDto {
 
     private Long id;
-
     private String name;
-
     private Integer floor;
-
     private Long buildingId;
-
     private List<LightDto> lights;
 
     public RoomDto(){}

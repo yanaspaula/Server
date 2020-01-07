@@ -39,6 +39,9 @@
 	<td>Saturation</td>
 	<td> RoomId</td>
 	<td>Switch Light</td>
+    <td>Set Light Red</td>
+    <td>Set Light Green</td>
+    <td>Set Light Blue</td>
 </tr>
 	
   <tr v-for="light in info">
@@ -47,10 +50,14 @@
   <td v-else-if="light.status==='OFF'"><img src="images/light-off.png"/></td>
   <td v-else>Erreur</td>
   <td>{{light.bri}}</td>
-  <td>{{light.colour}}</td>
+  <td>{{getLightString(light)}}</td>
   <td>{{light.sat}}</td>
   <td>{{light.roomId}}</td>
   <td><button v-on:click="switchLight(light)"><img src="images/switch.png"/></button></td>
+  <td><button v-on:click="setLight('red',light)">Red</button></td>
+  <td><button v-on:click="setLight('green',light)">Green</button> </td>
+  <td><button v-on:click="setLight('blue',light)">Blue</button> </td>
+
   </tr>
   </tbody>
   </table>

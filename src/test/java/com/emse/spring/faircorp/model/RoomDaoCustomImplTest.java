@@ -10,7 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-public class RoomDaoCustomImplTest {
+public class
+RoomDaoCustomImplTest {
 
     @Autowired
     private RoomDao roomDao;

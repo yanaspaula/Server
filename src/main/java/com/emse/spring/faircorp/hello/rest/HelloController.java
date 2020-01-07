@@ -1,6 +1,7 @@
+//Ce package est une partie test pour vérifier le bon fonctionnement de la création d'un serveur, à ignorer.
+
+
 package com.emse.spring.faircorp.hello.rest;
-
-
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

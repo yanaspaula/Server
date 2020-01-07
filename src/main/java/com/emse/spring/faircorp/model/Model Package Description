@@ -1,0 +1,16 @@
+/*Ce package contient les entités LIGHT ROOM et BUILDING ainsi que leur Dao associé, en pratique, seul l'entité LIGHT est utiliser dans les
+interactions avec les différents acteurs, les autres sont en pratique pas utilisé, mais ont le mérite d'exister.
+
+Seul la partie LIGHT est Commenté
+
+Pour LIGHT, l'object est défini par:
+
+un ID,
+un IDroom,
+un Brightness,
+un color(hue),
+un status,
+un saturation,
+
+chacun avec ces accesseurs et getters
+*/

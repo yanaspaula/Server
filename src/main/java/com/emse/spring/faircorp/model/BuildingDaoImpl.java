@@ -1,8 +1,9 @@
 package com.emse.spring.faircorp.model;
 
+import com.emse.spring.faircorp.entity.Light;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingDaoImpl implements BuildingDaoCustom{

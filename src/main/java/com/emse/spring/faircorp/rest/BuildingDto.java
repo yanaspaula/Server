@@ -1,17 +1,15 @@
+
 package com.emse.spring.faircorp.rest;
 
-import com.emse.spring.faircorp.model.Building;
-import com.emse.spring.faircorp.model.Room;
+import com.emse.spring.faircorp.entity.Building;
+import com.emse.spring.faircorp.entity.Room;
 
 import java.util.List;
 
 public class BuildingDto {
 
     private Long id;
-
     private String name;
-
-
     private List<Room> rooms;
 
     public BuildingDto(){}

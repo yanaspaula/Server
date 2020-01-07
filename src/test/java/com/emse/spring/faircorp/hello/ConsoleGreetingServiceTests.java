@@ -13,8 +13,6 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 @ExtendWith(OutputCaptureExtension.class)
 public class ConsoleGreetingServiceTests {
 
-
-
     @Test
     public void testGreeting(CapturedOutput output) {
         ConsoleGreetingService greetingService = new ConsoleGreetingService(); // 1

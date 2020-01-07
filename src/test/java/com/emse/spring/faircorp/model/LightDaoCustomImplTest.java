@@ -1,3 +1,5 @@
+//Ici on effectue des tests sur notre table, et pour l'entité LIGHT en particulier
+
 package com.emse.spring.faircorp.model;
 
 import com.emse.spring.faircorp.model.LightDao;
@@ -14,10 +16,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @DataJpaTest
 public class LightDaoCustomImplTest {
 
-       @Autowired
-       private LightDao lightDao;
+    @Autowired
+    private LightDao lightDao;
 
     @Test
+    //on vérifie que l'on est capable de détecter les lumières allumées
     public void shouldFindOnLights() {
         Assertions.assertThat(lightDao.findOnLights())
                 .hasSize(1)
@@ -25,6 +28,7 @@ public class LightDaoCustomImplTest {
                 .containsExactly(Tuple.tuple(-1L, Status.ON));
     }
 
+    //idem pour les éteintes
     @Test
     public void shouldFindOffLights() {
         Assertions.assertThat(lightDao.findOffLights())

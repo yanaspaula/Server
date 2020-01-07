@@ -10,9 +10,6 @@ public class BuildingDaoCustomImplTest {
     @Autowired
     private BuildingDao buildingDao;
 
-
-
-
     @Test
     public void shouldFindLights(){
         Assertions.assertThat(buildingDao.findLights(1L))

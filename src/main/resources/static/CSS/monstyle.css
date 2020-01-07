@@ -1,0 +1,65 @@
+body {
+    background: url('../images/Petitdessinfamiliale.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#titre_principal {
+    background-color: rgba(255,255,255, .5);
+}
+
+#table {
+    background-color: rgba(255,255,255, .5);
+}
+
+tableroom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#titre2 {
+    background-color: rgba(255,255,255, .5);
+}
+
+#tableroom {
+    background-color: rgba(255,255,255, .5);
+}
+
+th {
+  height: 50px;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+td {
+    
+}
+
+.button {
+    background:url(images/images/switch.png) no-repeat;
+    /*border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;*/
+}
+.button:icon {
+    background: url(images/images/switch.png) no-repeat;
+    float: left;
+    width: 10px;
+    height: 40px;
+} 
